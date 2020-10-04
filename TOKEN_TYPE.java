@@ -1,6 +1,18 @@
 public enum TOKEN_TYPE{
        ID, 
        NAME_TYPE,
+       IF,
+       ELSE,
+       ITERATE,
+       READ,
+       PRINT,
+       RETURN,
+       DATA,
+       NEW,
+       INT,
+       CHAR,
+       BOOL,
+       FLOAT,
        INTEGER_LITERAL,
        FLOAT_LITERAL,
        CHAR_LITERAL,
@@ -17,6 +29,7 @@ public enum TOKEN_TYPE{
        COMMA,
        EQ,
        RELACIONAL,
+       GREATER_THEN,
        EQEQ,
        DIFF,
        PLUS,
@@ -25,7 +38,9 @@ public enum TOKEN_TYPE{
        DIV,
        MOD,     
        AND,
-       DENY  
+       DENY,
+       COLON,
+       DOUBLECOLON  
 }
 
 

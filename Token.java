@@ -1,3 +1,8 @@
+/* 
+    Edson Lopes da Silva Júnior 201635023
+   Vinicius Alberto Alves da Silva 201665558C 
+*/
+
 public class Token{
     public int l, c;
     public TOKEN_TYPE t;

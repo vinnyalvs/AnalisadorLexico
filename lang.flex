@@ -1,4 +1,7 @@
-
+/* 
+   Edson Lopes da Silva Júnior 201635023
+   Vinicius Alberto Alves da Silva 201665558C 
+*/
 %%
 
 %unicode
@@ -31,8 +34,7 @@ Digito = [:digit:]
 Identificador = {Letras}(_|{Digito}|{Letras})* 
 literal_inteiro = {Digito}{Digito}*
 literal_ponto_flutuante = {Digito}*"."{Digito}+
-
-nome_tipo = {Maiusculas}([^\s]|{Digito}|{Letras})* 
+nome_tipo = {Maiusculas}([^ ]|{Digito}|{Letras})* 
 literal_logico = true|false
 literal_null = null 
 literal_caractere= "'"((.)|\\(n|t|b|r|\\|"'"))"'"
@@ -40,17 +42,37 @@ literal_caractere= "'"((.)|\\(n|t|b|r|\\|"'"))"'"
 /* comentários */
 Comentario = {ComentarioMultiplasLinhas} | {ComentarioLinha} 
 
-ComentarioMultiplasLinhas   = "{-" [^*] ~"-}" | "{-" "-"+ "}"
+ComentarioMultiplasLinhas  = "{-" [^*] ~"-}" | "{-" "-"+ "}"
 ComentarioLinha     = "--".*
 
 %%
 
-/* keywords */
+/* palavras reservadas */
+
+
 
 
 <YYINITIAL> {
+
+  /* palavras reservadas */
+  "if"                        { return symbol(TOKEN_TYPE.IF); }
+  "else"                        { return symbol(TOKEN_TYPE.ELSE); }
+  "iterate"                        { return symbol(TOKEN_TYPE.ITERATE); }
+  "read"                        { return symbol(TOKEN_TYPE.READ); }
+  "print"                        { return symbol(TOKEN_TYPE.PRINT); }
+  "return"                        { return symbol(TOKEN_TYPE.RETURN); }
+  "data"                        { return symbol(TOKEN_TYPE.DATA); }
+  "new"                        { return symbol(TOKEN_TYPE.NEW); }
+
+  "Int"                        { return symbol(TOKEN_TYPE.INT); }
+  "Char"                        { return symbol(TOKEN_TYPE.CHAR); }
+  "Bool"                        { return symbol(TOKEN_TYPE.BOOL); }
+  "Float"                        { return symbol(TOKEN_TYPE.FLOAT); }
+
+  
+
   /* literais */
-  {literal_logico}            { return symbol(TOKEN_TYPE.LOGICAL_LITERAL); }
+  {literal_logico}            { return symbol(TOKEN_TYPE.LOGICAL_LITERAL,Boolean.parseBoolean(yytext())); }
   {literal_null}              { return symbol(TOKEN_TYPE.NULL_LITERAL); }
   {literal_inteiro}           { return symbol(TOKEN_TYPE.INTEGER_LITERAL,Integer.parseInt(yytext())); }
   {literal_ponto_flutuante}   { return symbol(TOKEN_TYPE.FLOAT_LITERAL,Float.parseFloat(yytext())); }
@@ -60,8 +82,6 @@ ComentarioLinha     = "--".*
    
   {nome_tipo}                   { return symbol(TOKEN_TYPE.NAME_TYPE); }
   {Identificador}                { return symbol(TOKEN_TYPE.ID); }
-  
-    
 
 
    /* operadores e separadores */
@@ -84,13 +104,15 @@ ComentarioLinha     = "--".*
     "/"                            { return symbol(TOKEN_TYPE.DIV); }
     "%"                            { return symbol(TOKEN_TYPE.MOD); }
     "&&"                           { return symbol(TOKEN_TYPE.AND); }
-    "!"                            { return symbol(TOKEN_TYPE.DENY); }   
+    "!"                            { return symbol(TOKEN_TYPE.DENY); }  
+    ":"                            { return symbol(TOKEN_TYPE.COLON); } 
+    "::"                            { return symbol(TOKEN_TYPE.DOUBLECOLON); } 
 
   /* Comentários */
-  {Comentario}                      { /* ignore */ }
+  {Comentario}                      { /* ignorar */ }
   
   /* Espaço em */
-  {Brancos}                   { /* ignore */ }
+  {Brancos}                   { /* ignorar */ }
 }
 
 
