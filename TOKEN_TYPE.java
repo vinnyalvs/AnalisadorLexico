@@ -29,7 +29,7 @@ public enum TOKEN_TYPE{
        COMMA,
        EQ,
        RELACIONAL,
-       GREATER_THEN,
+       GREATER_THAN,
        EQEQ,
        DIFF,
        PLUS,
@@ -40,7 +40,9 @@ public enum TOKEN_TYPE{
        AND,
        DENY,
        COLON,
-       DOUBLECOLON  
+       DOUBLECOLON;
 }
+        
+
 
 

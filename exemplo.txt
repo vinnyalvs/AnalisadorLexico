@@ -3,7 +3,10 @@
    Vinicius Alberto Alves da Silva 201665558C 
 -}
 
-data Racional {}
+data Racional {numerador:: Float;
+               denominador:: Int;     
+              }
+
 main ( ) {
 print fat(10) ;
 }

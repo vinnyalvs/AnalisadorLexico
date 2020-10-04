@@ -9,13 +9,33 @@ public class Token{
     public String lexeme;
     public Object info;
 
-    /*public Token (TOKEN_TYPE t, String lex, Object o, int l, int c){
-        this.t = t;
-        lexeme = lex;
-        info = o;
-        this.l = l;
-        this.c = c;
-    }*/
+    public Boolean isReservedToken(TOKEN_TYPE token){
+
+       switch(token) {
+        case ID: 
+        case NAME_TYPE:
+        case IF:
+        case ELSE:
+        case ITERATE:
+        case READ:
+        case PRINT:
+        case RETURN:
+        case DATA:
+        case NEW:
+        case INT:
+        case CHAR:
+        case BOOL:
+        case FLOAT:
+        case INTEGER_LITERAL:
+        case FLOAT_LITERAL:
+        case CHAR_LITERAL:
+        case LOGICAL_LITERAL:
+        case NULL_LITERAL:
+            return true;
+        default:
+            return false;
+     }
+    }
 
     public Token (TOKEN_TYPE t, String lex, int l, int c){
         this.t = t;
@@ -39,7 +59,11 @@ public class Token{
     }
 
     public String output(){
-        return  t + ":" + lexeme + (info == null ? "" : info.toString());
+        String text = (info == null ? lexeme : info.toString());
+        if(isReservedToken(t))
+            return  t + ":" + text;
+        else 
+            return text;
     }
 }
 

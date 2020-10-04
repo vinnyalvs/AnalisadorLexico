@@ -7,7 +7,7 @@ import java.io.FileReader;
 
 public class LangReader{
     public static void  main(String args[]) throws Exception {
-        LexerLang lx = new LexerLang(new FileReader(args[1]));
+        LexerLang lx = new LexerLang(new FileReader(args[0]));
         Token t = lx.nextToken();
         while( t != null){
             System.out.println(t.output());

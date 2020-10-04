@@ -54,6 +54,8 @@ ComentarioLinha     = "--".*
 
 <YYINITIAL> {
 
+
+
   /* palavras reservadas */
   "if"                        { return symbol(TOKEN_TYPE.IF); }
   "else"                        { return symbol(TOKEN_TYPE.ELSE); }
@@ -80,9 +82,9 @@ ComentarioLinha     = "--".*
 
    /* identificadores */ 
    
-  {nome_tipo}                   { return symbol(TOKEN_TYPE.NAME_TYPE); }
+ 
   {Identificador}                { return symbol(TOKEN_TYPE.ID); }
-
+  {nome_tipo}                   { return symbol(TOKEN_TYPE.NAME_TYPE); }
 
    /* operadores e separadores */
     "="                            { return symbol(TOKEN_TYPE.EQ); }
@@ -98,6 +100,7 @@ ComentarioLinha     = "--".*
     "."                            { return symbol(TOKEN_TYPE.DOT); }
     ","                            { return symbol(TOKEN_TYPE.COMMA); }
     "<"                            { return symbol(TOKEN_TYPE.RELACIONAL); }
+    ">"                            { return symbol(TOKEN_TYPE.GREATER_THAN); }
     "!="                           { return symbol(TOKEN_TYPE.DIFF); }
     "-"                            { return symbol(TOKEN_TYPE.MINUS); }
     "*"                            { return symbol(TOKEN_TYPE.TIMES); }
