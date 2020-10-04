@@ -1,0 +1,31 @@
+public enum TOKEN_TYPE{
+       ID, 
+       NAME_TYPE,
+       INTEGER_LITERAL,
+       FLOAT_LITERAL,
+       CHAR_LITERAL,
+       LOGICAL_LITERAL,
+       NULL_LITERAL,
+       OP_PARENTHESIS,
+       CL_PARENTHESIS,
+       OP_SQBRACKET,
+       CL_SQBRACKET,
+       OP_BRACKET,
+       CL_BRACKET,
+       SEMI,
+       DOT,
+       COMMA,
+       EQ,
+       RELACIONAL,
+       EQEQ,
+       DIFF,
+       PLUS,
+       MINUS,
+       TIMES,
+       DIV,
+       MOD,     
+       AND,
+       DENY  
+}
+
+
